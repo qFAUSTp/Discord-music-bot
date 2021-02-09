@@ -19,7 +19,7 @@ async def on_ready():
 
 @bot.event
 async def on_reaction_add(reaction, user):
-    if (str(user) != "Music Bot (for test)#6010") and (str(reaction) == '⏭️'):
+    if (str(user) != botName) and (str(reaction) == '⏭️'):
         voice = get(bot.voice_clients, guild=user.guild)
         if voice and voice.is_playing():
             print(f"Music skipped")
