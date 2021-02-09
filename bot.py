@@ -15,7 +15,7 @@ async def on_ready():
     global num
     global message
     num = []
-    print('Logged in as: ' + bot.user.name + '\n')
+    print("Logged in as: " + bot.user.name + '\n')
 
 @bot.event
 async def on_reaction_add(reaction, user):
@@ -25,14 +25,14 @@ async def on_reaction_add(reaction, user):
             print(f"Music skipped")
             voice.stop()
 
-@bot.command(pass_contex=True, aliases=['joi'])
+@bot.command(pass_contex=True, aliases=['j'])
 async def join(ctx):
     channel = ctx.message.author.voice.channel
     voice = get(bot.voice_clients, guild=ctx.guild)
     voice = await channel.connect()
     print(f"The bot has connected to {channel}\n")
 
-@bot.command(pass_contex=True, aliases=['le','kick','ki'])
+@bot.command(pass_contex=True, aliases=['l'])
 async def leave(ctx):
     channel = ctx.message.author.voice.channel
     voice = get(bot.voice_clients, guild=ctx.guild)
@@ -77,13 +77,12 @@ def playNow(ctx, files, i):
     else:
         print(f"No more music in this list...")
 
-@bot.command(pass_contex=True, aliases=['ne','skip','sk'])
+@bot.command(pass_contex=True, aliases=['n'])
 async def next(ctx):
     voice = get(bot.voice_clients, guild=ctx.guild)
 
     if voice and voice.is_playing():
         print(f"Music skipped")
         voice.stop()
-        await ctx.send("Skipped")
 
 bot.run(token)
