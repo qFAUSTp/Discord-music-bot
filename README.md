@@ -1,6 +1,6 @@
 
 # **Discord music bot**
-Music bot for discord that can be run on your machine. That bot can playing music playlist from youre local storage (defult: *C:\Music*).
+Music bot for discord that can be run on your machine. That bot can playing music playlist from your local storage (defult: *C:\Music*).
 
 # Installing
 Python 3.5.3 or higher is required.
