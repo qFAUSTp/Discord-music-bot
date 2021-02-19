@@ -22,7 +22,7 @@ async def on_reaction_add(reaction, user):
     if (str(user) != botName) and (str(reaction) == '⏭️'):
         voice = get(bot.voice_clients, guild=user.guild)
         if voice and voice.is_playing():
-            print(f"Music skipped")
+            print(str(user) + " skipped the track")
             voice.stop()
 
 @bot.command(pass_contex=True, aliases=['j'])
@@ -48,9 +48,6 @@ async def play(ctx):
             if '.mp3' in file:
                 files.append(os.path.join(r,file))
 
-    for f in files:
-        print(f)
-
     i=0
     while i<len(files):
         num.append(i)
@@ -72,7 +69,7 @@ def playNow(ctx, files, i):
     if i < len(files):
         voice = get(bot.voice_clients, guild=ctx.guild)
         voice.play(discord.FFmpegPCMAudio(files[num[i]]), after=lambda e: playNow(ctx, files, i+1))
-        print(f"-> " + files[num[i]])
+        print(f"-> ["+ str(i) + "/" + str(len(files)) + "]: " + files[num[i]])
         del voice
     else:
         print(f"No more music in this list...")
